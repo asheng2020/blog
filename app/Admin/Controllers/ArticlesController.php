@@ -72,14 +72,15 @@ class ArticlesController extends AdminController
     {
         $form = new Form(new Article());
 
-        $form->text('title', __('Title'));
-        $form->image('cover', __('Cover'));
-        $form->text('description', __('Description'));
-        $form->textarea('content', __('Content'));
-        $form->text('category', __('Category'));
-        $form->number('read_count', __('Read count'));
-        $form->number('comment_count', __('Comment count'));
-        $form->switch('on_show', __('On show'));
+        $form->text('title', '文章标题')->rules('required');
+        $form->image('cover', '文章封面')->rules('required|image');
+        $form->text('description', '文章简述')->rules('required');
+        $form->text('category', '文章类别')->rules('required');
+        $form->quill('content', '文章内容')->rules('required');
+        $form->radio('on_show', '是否显示')->options([
+            '1' => '是',
+            '0' => '否'
+        ])->default('1');
 
         return $form;
     }

@@ -35,32 +35,11 @@ class ArticlesController extends AdminController
             return $value ? '是' : '否';
         });
 
+        $grid->actions(function ($actions) {
+            $actions->disableView();
+        });
+
         return $grid;
-    }
-
-    /**
-     * Make a show builder.
-     *
-     * @param mixed $id
-     * @return Show
-     */
-    protected function detail($id)
-    {
-        $show = new Show(Article::findOrFail($id));
-
-        $show->field('id', __('Id'));
-        $show->field('title', __('Title'));
-        $show->field('cover', __('Cover'));
-        $show->field('description', __('Description'));
-        $show->field('content', __('Content'));
-        $show->field('category', __('Category'));
-        $show->field('read_count', __('Read count'));
-        $show->field('comment_count', __('Comment count'));
-        $show->field('on_show', __('On show'));
-        $show->field('created_at', __('Created at'));
-        $show->field('updated_at', __('Updated at'));
-
-        return $show;
     }
 
     /**

@@ -4,29 +4,36 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Models\Category;
 
 class ArticlesController extends Controller
 {
-    public function index(Request $request) {
-        $hot_articles = Article::query()->where('on_show', true)->orderBy('read_count', 'desc')->paginate(6);
+    public function home() {
 
-        $new_articles = Article::query()->where('on_show', true)->orderBy('created_at', 'desc')->paginate(6);
+        $articles = Article::query()->orderByDesc('read_count')->get()->take(3);
 
-        $comment_articles = Article::query()->where('on_show', true)->orderBy('comment_count', 'desc')->paginate(6);
+        return view('index', ['articles' => $articles]);
+    }
 
-        $rand_articles = Article::inRandomOrder()->take(6)->get();
+    public function index() {
 
-        $category1 = Article::query()->where('on_show', true)->where('category', '美女联盟')->paginate(6);
+        $articles = Article::query()->orderByDesc('is_top')->orderByDesc('created_at')->paginate(10);
 
-        $category2 = Article::query()->where('on_show', true)->where('category', '美少女联盟')->paginate(6);
+        $top_articles = $articles->where('is_top')->pluck('title', 'id');
 
-        return view('index', [
-            'hot_articles'      => $hot_articles,
-            'new_articles'      => $new_articles,
-            'comment_articles'  => $comment_articles,
-            'rand_articles'     => $rand_articles,
-            'category1'         => $category1,
-            'category2'         => $category2
+        $hot_articles = Article::query()->orderByDesc('read_count')->paginate(10);
+
+        $categories = Category::get();
+
+        return view('pages.articles', [
+            'articles'      => $articles,
+            'top_articles'  => $top_articles,
+            'hot_articles'  => $hot_articles,
+            'categories'    => $categories,
         ]);
+    }
+
+    public function show() {
+        return '';
     }
 }

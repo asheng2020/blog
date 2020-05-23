@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use App\Models\Category;
+use Encore\Admin\Traits\DefaultDatetimeFormat;
 
 class Article extends Model
 {
+    use DefaultDatetimeFormat;
+
     protected $fillable = [
         'title',
         'cover',

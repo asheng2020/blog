@@ -14,7 +14,7 @@ class ArticlesSeeder extends Seeder
     public function run()
     {
         Category::all()->each(function (Category $category) {
-            factory(Article::class, random_int(1, 10))->create(['category_id' => $category->id]);
+            factory(Article::class, 20)->create(['category_id' => $category->id]);
         });
     }
 }

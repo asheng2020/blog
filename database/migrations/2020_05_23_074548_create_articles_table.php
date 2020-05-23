@@ -19,11 +19,13 @@ class CreateArticlesTable extends Migration
             $table->string('cover');
             $table->string('description');
             $table->text('content');
-            $table->string('category');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             // $table->string('tag');
             $table->unsignedInteger('read_count')->default(0);
             $table->unsignedInteger('comment_count')->default(0);
-            $table->boolean('on_show');
+            $table->boolean('on_show')->default(true);
+            $table->boolean('is_top')->default(false);
             $table->timestamps();
         });
     }

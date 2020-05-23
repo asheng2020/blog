@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use App\Models\Category;
 
 class Article extends Model
 {
@@ -12,14 +13,16 @@ class Article extends Model
         'cover',
         'description',
         'content',
-        'category',
+        'category_id',
         'read_count',
         'comment_ount',
-        'on_show'
+        'on_show',
+        'is_top'
     ];
 
     protected $casts = [
-        'on_show' => 'boolean',
+        'on_show'   => 'boolean',
+        'is_top'    => 'boolean'
     ];
 
     public function getImageUrlAttribute()
@@ -29,5 +32,9 @@ class Article extends Model
             return $this->attributes['cover'];
         }
         return \Storage::disk('public')->url($this->attributes['cover']);
+    }
+
+    public function category() {
+        return $this->belongsTo(Category::class);
     }
 }

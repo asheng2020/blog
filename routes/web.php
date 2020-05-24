@@ -24,5 +24,5 @@ Route::get('/diaries', 'DiariesController@index')->name('diaries.index');
 
 Route::get('/links', 'LinksController@index')->name('links.index');
 
-Route::get('/about', 'ArticlesController@about')->name('about');
+Route::get('/about', 'AboutController@index')->name('about.index');
 

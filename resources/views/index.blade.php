@@ -22,6 +22,9 @@
             <li><a href="">首页</a></li>
             <li><a href="/articles">博客</a></li>
             <li><a href="/messages">留言</a></li>
+            <li><a href="/diaries">日记</a></li>
+            <li><a href="/links">友链</a></li>
+            <li><a href="/about">关于</a></li>
         </ul>
         <div class="logo"><a>Mr.Yss</a></div>
     </div>
@@ -55,12 +58,12 @@
                         <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".{{ $key*2 }}s" style="padding: 0 10px">
                             <div class="single-news">
                                 <div class="news-head">
-                                    <img src="{{ $article->image_url }}">
-                                    <a href="#" class="link"><i class="fa fa-link"></i></a>
+                                    <img style="background-image: url({{ $article->image_url }});background-position:center center;background-size: cover;">
+                                    <a href="{{ route('articles.show', $article->id) }}" class="link"><i class="fa fa-link"></i></a>
                                 </div>
                                 <div class="news-content">
                                     <h4>
-                                        <a href="#">
+                                        <a href="{{ route('articles.show', $article->id) }}">
                                             {{ $article->title }}
                                         </a>
                                     </h4>
@@ -70,7 +73,7 @@
                                     <p>
                                         {{ $article->description }}
                                     </p>
-                                    <a href="#" class="btn">
+                                    <a href="{{ route('articles.show', $article->id) }}" class="btn">
                                         阅读全文
                                     </a>
                                 </div>

@@ -26,4 +26,11 @@ Route::group([
     $router->get('categories/{id}/edit', 'CategoriesController@edit');
     $router->put('categories/{id}', 'CategoriesController@update');
 
+    // 日记
+    $router->get('diaries', 'DiariesController@index');
+    $router->get('diaries/create', 'DiariesController@create');
+    $router->post('diaries', 'DiariesController@store');
+    $router->get('diaries/{id}/edit', 'DiariesController@edit');
+    $router->put('diaries/{id}', 'DiariesController@update');
+
 });

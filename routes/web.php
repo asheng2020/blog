@@ -18,3 +18,5 @@ Route::get('/', 'ArticlesController@home')->name('articles.home');
 Route::get('/articles', 'ArticlesController@index')->name('articles.index');
 
 Route::get('/articles/{id}', 'ArticlesController@show')->name('articles.show');
+
+Route::get('/diaries', 'DiariesController@index')->name('diaries.index');

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/static/css/gloable.css" />
     <link rel="stylesheet" href="/static/css/nprogress.css" />
     <link rel="stylesheet" href="/static/css/blog.css" />
+    <link rel="stylesheet" href="/static/css/timeline.css" />
 </head>
 <body>
     <div class="header">
@@ -27,7 +28,9 @@
                         <li><a href="/">首页</a></li>
                         <li><a href="/articles">博客</a></li>
                         <li><a href="/messages">留言</a></li>
+                        <li><a href="/diaries">日记</a></li>
                         <li><a href="/links">友链</a></li>
+                        <li><a href="/links">关于</a></li>
                     </ul>
                 </nav>
                 <a href="/User/QQLogin" class="blog-user">

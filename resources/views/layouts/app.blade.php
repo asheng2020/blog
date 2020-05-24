@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/static/css/gloable.css" />
     <link rel="stylesheet" href="/static/css/nprogress.css" />
     <link rel="stylesheet" href="/static/css/blog.css" />
-    <link rel="stylesheet" href="/static/css/timeline.css" />
+    <link rel="stylesheet" href="/static/css/about.css" />
 </head>
 <body>
     <div class="header">
@@ -25,12 +25,12 @@
                 <a href="javascript:void(0)" class="header-logo" id="logo">Mr.Yss</a>
                 <nav class="nav" id="nav">
                     <ul>
-                        <li><a href="/">首页</a></li>
+                        <li><a href="/index">首页</a></li>
                         <li><a href="/articles">博客</a></li>
                         <li><a href="/messages">留言</a></li>
                         <li><a href="/diaries">日记</a></li>
                         <li><a href="/links">友链</a></li>
-                        <li><a href="/links">关于</a></li>
+                        <li><a href="/about">关于</a></li>
                     </ul>
                 </nav>
                 <a href="/User/QQLogin" class="blog-user">
@@ -70,6 +70,9 @@
     <script src="/static/js/plugins/nprogress.js"></script>
     <script>NProgress.start();</script>
     <script src="/static/js/yss/article.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/static/js/plugins/blogbenoitboucart.min.js"></script>
+    <script src="/static/js/pagediary.js"></script>
     <script>
         window.onload = function () {
             NProgress.done();

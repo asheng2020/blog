@@ -2,6 +2,7 @@
 @section('title', '日记')
 
 @section('content')
+<link rel="stylesheet" href="/static/css/timeline.css" />
 <div class="doc-container" id="doc-container">
      <div class="container-fixed">
         <div class="timeline-box shadow">

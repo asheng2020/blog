@@ -33,4 +33,11 @@ Route::group([
     $router->get('diaries/{id}/edit', 'DiariesController@edit');
     $router->put('diaries/{id}', 'DiariesController@update');
 
+    // 友链
+    $router->get('links', 'LinksController@index');
+    $router->get('links/create', 'LinksController@create');
+    $router->post('links', 'LinksController@store');
+    $router->get('links/{id}/edit', 'LinksController@edit');
+    $router->put('links/{id}', 'LinksController@update');
+
 });

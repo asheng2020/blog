@@ -33,7 +33,13 @@ class ArticlesController extends Controller
         ]);
     }
 
-    public function show() {
-        return '';
+    public function show(Article $article) {
+
+        $recommends = Article::query()->inRandomOrder()->take(3)->get();
+
+        return view('pages.content', [
+            'article'   => $article,
+            'recommends' => $recommends,
+        ]);
     }
 }

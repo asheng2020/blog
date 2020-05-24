@@ -18,9 +18,11 @@ Route::redirect('/index', '/');
 
 Route::get('/articles', 'ArticlesController@index')->name('articles.index');
 
-Route::get('/articles/{id}', 'ArticlesController@show')->name('articles.show');
+Route::get('/articles/{article}', 'ArticlesController@show')->name('articles.show');
 
 Route::get('/diaries', 'DiariesController@index')->name('diaries.index');
 
 Route::get('/links', 'LinksController@index')->name('links.index');
+
+Route::get('/about', 'ArticlesController@about')->name('about');
 

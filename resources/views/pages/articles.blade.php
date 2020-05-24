@@ -31,7 +31,8 @@
                             {{ $article->description }}
                         </div>
                         <div class="read-more">
-                            <a href="{{ route('articles.show', $article->id) }}" class="fc-black f-fwb">阅读全文</a>
+                            <a href="{{ route('articles.show', $article->id) }}" class="fc-black f-fwb" style="margin-right: 8px;">阅读全文</a>
+                            <a href="{{ $article->image_url }}" target="_blank" class="fc-blue f-fwb">封面图</a>
                         </div>
                         <aside class="f-oh footer">
                             <div class="f-fl tags">
@@ -52,6 +53,7 @@
                     </section>
                     @endforeach
                     <div class="layui-flow-more"><a href="javascript:;"><cite>加载更多</cite></a></div>
+                    <div >{{ $articles->render() }}</div>
                 </article>
             </div>
         </div>

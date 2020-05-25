@@ -7,54 +7,9 @@
         <div class="col-content">
             <div class="inner">
                 <article class="article-list bloglist" id="LAY_bloglist" >
-                    @foreach($articles as $article)
-                    <section class="article-item zoomIn article">
-                        @if($article->is_top)
-                        <div class="fc-flag">置顶</div>
-                        @endif
-                        <h5 class="title">
-                            <span class="fc-blue">【原创】</span>
-                            <a href="{{ route('articles.show', $article->id) }}">{{ $article->title }}</a>
-                        </h5>
-                        <div class="time">
-                            <span class="day">{{ $article->created_at->format('j') }}</span>
-                            <span class="month fs-18">{{ $article->created_at->format('n') }}<span class="fs-14">月</span></span>
-                            <span class="year fs-18 ml10">{{ $article->created_at->format('Y') }}</span>
-                        </div>
-                        <div class="content">
-                            <a href="{{ route('articles.show', $article->id) }}" class="cover img-light">
-                                <img style="background-image: url({{ $article->image_url }});background-position:center center;background-size: cover;">
-<!--                            <svg xmlns="http://www.w3.org/2000/svg" height="100%" width="100%">
-                                    <image xlink:href='{{ $article->image_url }}' height="100%" width="100%"/>
-                                </svg> -->
-                            </a>
-                            {{ $article->description }}
-                        </div>
-                        <div class="read-more">
-                            <a href="{{ route('articles.show', $article->id) }}" class="fc-black f-fwb" style="margin-right: 8px;">阅读全文</a>
-                            <a href="{{ $article->image_url }}" target="_blank" class="fc-blue f-fwb">封面图</a>
-                        </div>
-                        <aside class="f-oh footer">
-                            <div class="f-fl tags">
-                                <span class="fa fa-tags fs-16"></span>
-                                <a class="tag">{{ $article->category->name }}</a>
-                            </div>
-                            <div class="f-fr">
-                                <span class="read">
-                                    <i class="fa fa-eye fs-16"></i>
-                                    <i class="num">{{ $article->read_count }}</i>
-                                </span>
-                                <span class="ml20">
-                                    <i class="fa fa-comments fs-16"></i>
-                                    <a href="javascript:void(0)" class="num fc-grey">{{ $article->comment_count }}</a>
-                                </span>
-                            </div>
-                        </aside>
-                    </section>
-                    @endforeach
-                    <div class="layui-flow-more"><a href="javascript:;"><cite>加载更多</cite></a></div>
-                    <div >{{ $articles->render() }}</div>
+                    @include('pages.data')
                 </article>
+
             </div>
         </div>
         <div class="col-other">
@@ -71,9 +26,9 @@
                     </div>
                     <ul class="category mt20" id="category">
                         <li data-index="0" class="slider"></li>
-                        <li data-index="1"><a href="">全部文章</a></li>
+                        <li data-index="1"><a href="{{ route('articles.index') }}">全部文章</a></li>
                         @foreach($categories as $key => $category)
-                        <li data-index="{{ $key + 2 }}"><a href="/Blog/Article/1/">{{ $category->name }}</a></li>
+                        <li data-index="{{ $key + 2 }}"><a href="?category_id={{ $category->id }}">{{ $category->name }}</a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -81,7 +36,7 @@
                 <div class="category-toggle"><i class="layui-icon">&#xe603;</i></div>
                 <div class="article-category">
                     <div class="article-category-title">分类导航</div>
-                            <a href="/Blog/Article/1/">个人日记</a>
+                            <a href="?/category_id=1">个人日记</a>
                             <a href="/Blog/Article/2/">HTML5&amp;CSS3</a>
                             <a href="/Blog/Article/3/">JavaScript</a>
                             <a href="/Blog/Article/4/">ASP.NET MVC</a>
@@ -133,4 +88,67 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scriptsAfterJs')
+  <script type="text/javascript">
+        var page = 1;
+        $(document).ready(function(){
+            // if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) { //移动端
+            //     // $("#LAY_bloglist").append("<div class='layui-flow-more' id='more'><a href='javascript:;'><cite>加载更多</cite></a></div>");
+            //     var page = 2;
+            //     $('#more').click(function() {
+            //         loadMoreData(page);
+            //         page++;
+            //         $("#more").remove();
+            //     })
+            // } else {
+            //     var page = 1;
+            //     $(window).scroll(function() {
+            //         if($(window).scrollTop() + $(window).height() >= $(document).height() ) {
+            //             page++;
+            //             loadMoreData(page);
+            //         }
+            //     })
+            // }
+            $(window).scroll(function() {
+                // if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) { //移动端
+                //     var page = 2;
+                //     $('#more').click(function() {
+                //         loadMoreData(page);
+                //         page++;
+                //     })
+                // } else {
+                    if($(window).scrollTop() + $(window).height() >= $(document).height() ) {
+                        page++;
+                        loadMoreData(page);
+                    }
+                // }
+            });
+        });
+
+        function loadMoreData(page) {
+            // $("#more").hide();
+            url = window.location.href;
+            url.indexOf('?') !== -1 ? url+="&page=" + page : url+="?page=" + page;
+            $.ajax({
+                url: url,
+                type: "GET",
+                beforeSend: function() {
+                    $('.ajax-load').show();
+                }
+            }).done(function(data) {
+                if(data.html == "") {
+                    // $("#more").hide();
+                    // $("#LAY_bloglist").append("<div class='layui-flow-more'>没有更多了</div>");
+                    return;
+                }
+                $('.ajax-load').hide();
+                $("#LAY_bloglist").append(data.html);
+                // $("#LAY_bloglist").append("<div class='layui-flow-more' id='more'><a href='javascript:;'><cite>加载更多</cite></a></div>");
+            }).fail(function(jqXHR, ajaxOptions, thrownError) {
+                alert('服务器未响应');
+            });
+        }
+    </script>
 @endsection

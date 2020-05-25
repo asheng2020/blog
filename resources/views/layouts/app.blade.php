@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width" />
     <meta name="author" content="www.yanshisan.cn" />
     <meta name="robots" content="all" />
+    <meta name="_token" content="{{ csrf_token() }}"/>
     <title>@yield('title')</title>
     <link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/static/layui/css/layui.css" />
@@ -78,5 +79,6 @@
             NProgress.done();
         };
     </script>
+    @yield('scriptsAfterJs')
 </body>
 </html>

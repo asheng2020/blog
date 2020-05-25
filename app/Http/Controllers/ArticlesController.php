@@ -15,9 +15,21 @@ class ArticlesController extends Controller
         return view('index', ['articles' => $articles]);
     }
 
-    public function index() {
+    public function index(Request $request) {
 
-        $articles = Article::query()->orderByDesc('is_top')->orderByDesc('created_at')->paginate(10);
+        $builder = Article::query()->where('on_show', true);
+
+        // $articles = Article::query()->orderByDesc('is_top')->orderByDesc('created_at');
+        if ($category = $request->category_id) {
+            $builder->where('category_id', $category);
+        }
+
+        $articles = $builder->orderByDesc('is_top')->orderByDesc('created_at')->paginate(16);
+
+        if ($request->ajax()) {
+            $view = view('pages.data', ['articles' => $articles])->render();
+            return response()->json(['html'=>$view]);
+        }
 
         $top_articles = $articles->where('is_top')->pluck('title', 'id');
 
@@ -35,7 +47,7 @@ class ArticlesController extends Controller
 
     public function show(Article $article) {
 
-        $recommends = Article::query()->inRandomOrder()->take(3)->get();
+        $recommends = Article::query()  ->inRandomOrder()->take(3)->get();
 
         return view('pages.content', [
             'article'   => $article,

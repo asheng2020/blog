@@ -27,6 +27,9 @@ class ArticlesController extends Controller
         $articles = $builder->orderByDesc('is_top')->orderByDesc('created_at')->paginate(16);
 
         if ($request->ajax()) {
+            if ($articles->count() <= 0) {
+                return response()->json(['html'=> '']);
+            }
             $view = view('pages.data', ['articles' => $articles])->render();
             return response()->json(['html'=>$view]);
         }
@@ -53,5 +56,19 @@ class ArticlesController extends Controller
             'article'   => $article,
             'recommends' => $recommends,
         ]);
+    }
+
+    public function search(Request $request) {
+        $builder = Article::query()->where('on_show', true);
+        if ($search = $request->input('content', '')) {
+            $like = '%'.$search.'%';
+            // 模糊搜索商品标题、商品详情、SKU 标题、SKU描述
+            $builder->where(function ($query) use ($like) {
+                $query->where('title', 'like', $like);
+            });
+        }
+        $articles = $builder->get();
+        $view = view('pages.search', ['articles' => $articles, 'search' => $search])->render();
+        return response()->json(['html' => $view]);
     }
 }

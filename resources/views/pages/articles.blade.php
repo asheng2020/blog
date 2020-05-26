@@ -36,11 +36,10 @@
                 <div class="category-toggle"><i class="layui-icon">&#xe603;</i></div>
                 <div class="article-category">
                     <div class="article-category-title">分类导航</div>
-                            <a href="?/category_id=1">个人日记</a>
-                            <a href="/Blog/Article/2/">HTML5&amp;CSS3</a>
-                            <a href="/Blog/Article/3/">JavaScript</a>
-                            <a href="/Blog/Article/4/">ASP.NET MVC</a>
-                            <a href="/Blog/Article/5/">其它</a>
+                            <a href="{{ route('articles.index') }}">全部文章</a>
+                            @foreach($categories as $key => $category)
+                            <a href="?category_id={{ $category->id }}">{{ $category->name }}</a>
+                            @endforeach
                     <div class="f-cb"></div>
                 </div>
                 <!--遮罩-->
@@ -93,44 +92,52 @@
 @section('scriptsAfterJs')
   <script type="text/javascript">
         var page = 1;
+        url = window.location.href;
         $(document).ready(function(){
-            // if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) { //移动端
-            //     // $("#LAY_bloglist").append("<div class='layui-flow-more' id='more'><a href='javascript:;'><cite>加载更多</cite></a></div>");
-            //     var page = 2;
-            //     $('#more').click(function() {
-            //         loadMoreData(page);
-            //         page++;
-            //         $("#more").remove();
-            //     })
-            // } else {
-            //     var page = 1;
-            //     $(window).scroll(function() {
-            //         if($(window).scrollTop() + $(window).height() >= $(document).height() ) {
-            //             page++;
-            //             loadMoreData(page);
-            //         }
-            //     })
-            // }
-            $(window).scroll(function() {
-                // if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) { //移动端
-                //     var page = 2;
-                //     $('#more').click(function() {
-                //         loadMoreData(page);
-                //         page++;
-                //     })
-                // } else {
+
+            var category_id = url.split('category_id=')[1];
+            if(category_id) {
+                $("#category li[data-index='1']").removeClass();
+                $("#category li[data-index='0']").attr("style", "top:"+ category_id*40 + "px");
+                $("#category li[data-index='"+ category_id +"']").addClass('current');
+            }
+
+            $("#searchtxt").bind("input propertychange",function(event){
+                $.ajax({
+                    url: '/search',
+                    type: "POST",
+                    data: {
+                        content : $("#searchtxt").val(),
+                    },
+                    headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') },
+                }).done(function(data) {
+                    if(data.html == "") {
+                        return;
+                    }
+
+                    $(".search-result").css('display', 'block');
+                    $(".search-result li").remove();
+                    $(".search-result").append(data.html);
+                }).fail(function(jqXHR, ajaxOptions, thrownError) {
+                    alert('服务器未响应');
+                });
+            });
+
+            if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) { //移动端
+                $("#LAY_bloglist").append("<div class='layui-flow-more' id='more'><a onclick='loadAndoridData()'><cite>加载更多</cite></a></div>");
+            } else {
+                $(window).scroll(function() {
                     if($(window).scrollTop() + $(window).height() >= $(document).height() ) {
                         page++;
                         loadMoreData(page);
                     }
-                // }
-            });
+                });
+            }
         });
 
         function loadMoreData(page) {
-            // $("#more").hide();
-            url = window.location.href;
             url.indexOf('?') !== -1 ? url+="&page=" + page : url+="?page=" + page;
+
             $.ajax({
                 url: url,
                 type: "GET",
@@ -139,16 +146,24 @@
                 }
             }).done(function(data) {
                 if(data.html == "") {
-                    // $("#more").hide();
-                    // $("#LAY_bloglist").append("<div class='layui-flow-more'>没有更多了</div>");
                     return;
                 }
                 $('.ajax-load').hide();
                 $("#LAY_bloglist").append(data.html);
-                // $("#LAY_bloglist").append("<div class='layui-flow-more' id='more'><a href='javascript:;'><cite>加载更多</cite></a></div>");
+                if(/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) { //移动端
+                    if(!document.getElementById('nothing')) {
+                        $("#LAY_bloglist").append("<div class='layui-flow-more' id='more'><a onclick='loadAndoridData()'><cite>加载更多</cite></a></div>");
+                    }
+                }
             }).fail(function(jqXHR, ajaxOptions, thrownError) {
                 alert('服务器未响应');
             });
+        }
+
+        function loadAndoridData() {
+            page++;
+            $("#more").remove();
+            loadMoreData(page);
         }
     </script>
 @endsection

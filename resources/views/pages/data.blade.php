@@ -37,15 +37,14 @@
             </span>
             <span class="ml20">
                 <i class="fa fa-comments fs-16"></i>
-                <a href="javascript:void(0)" class="num fc-grey">{{ $article->comment_count }}</a>
+                <a href="javascript:void(0)" class="num fc-grey">{{ $article->comment_count }} </a>
+                <a href="javascript:void(0)" class="num fc-grey">{{ $articles->count() }} </a>
             </span>
         </div>
     </aside>
 </section>
 @endforeach
 
-<!-- @if($articles->currentPage() == $articles->lastPage())
-<div class='layui-flow-more'>没有更多了</div>
-@else
-<div class='layui-flow-more' id='more'><a href='javascript:;'><cite>加载更多</cite></a></div>
-@endif -->
+@if($articles->currentPage() == $articles->lastPage() or $articles->count() < 16)
+<div class='layui-flow-more' id='nothing'>没有更多了</div>
+@endif

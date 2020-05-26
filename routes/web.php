@@ -26,3 +26,5 @@ Route::get('/links', 'LinksController@index')->name('links.index');
 
 Route::get('/about', 'AboutController@index')->name('about.index');
 
+Route::post('/search', 'ArticlesController@search');
+

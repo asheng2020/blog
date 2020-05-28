@@ -1,31 +1,15 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <meta charset="utf-8" />
+    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width" />
     <meta name="author" content="www.yanshisan.cn" />
     <meta name="robots" content="all" />
-    <!-- <meta name="_token" content="{{ csrf_token() }}"/> -->
+    <meta name="_token" content="{{ csrf_token() }}"/>
     <title>@yield('title')</title>
+    @yield('css')
     <link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/static/layui/css/layui.css" />
     <link rel="stylesheet" href="/static/css/master.css" />
@@ -33,10 +17,10 @@
     <link rel="stylesheet" href="/static/css/nprogress.css" />
     <link rel="stylesheet" href="/static/css/blog.css" />
     <link rel="stylesheet" href="/static/css/about.css" />
+
 </head>
 <body>
-    <div id="app">
-        <div class="header">
+    <div class="header">
     </div>
     <header class="gird-header">
         <div class="header-fixed">
@@ -52,9 +36,30 @@
                         <li><a href="/about">关于</a></li>
                     </ul>
                 </nav>
-                <a href="/User/QQLogin" class="blog-user">
+
+<!--                 <a href="/User/QQLogin" class="blog-user">
+                    <i class="fa fa-qq"></i>
+                </a> -->
+                @guest
+                <div class="blog-user">
+                    <a href="{{ route('register') }}" class="blog-login-btn layui-btn layui-btn-normal layui-btn-radius">注册</a>
+                    <a href="{{ route('login') }}" class="blog-login-btn layui-btn layui-btn-normal layui-btn-radius">登录</a>
+                </div>
+                @else
+                <a href="{{ route('logout') }}" class="blog-user" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                    <img src="https://thirdqq.qlogo.cn/g?b=oidb&amp;k=7plfrRUaoVfEC1VIQafMZw&amp;s=100&amp;t=1587038896" alt="阿生" title="阿生">
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  {{ csrf_field() }}
+                </form>
+                @endguest
+<!--                 <a href="/User/QQLogin" class="blog-user">
                     <i class="fa fa-qq"></i>
                 </a>
+                <a href="/User/QQLogin" class="blog-user">
+                    <i class="fa fa-qq"></i>
+                </a> -->
                 <a class="phone-menu">
                     <i></i>
                     <i></i>
@@ -64,8 +69,8 @@
         </div>
     </header>
 
-            @yield('content')
-    </div>
+    @yield('content')
+
 
     <footer class="grid-footer">
         <div class="footer-fixed">
@@ -97,5 +102,6 @@
             NProgress.done();
         };
     </script>
+    @yield('scriptsAfterJs')
 </body>
 </html>

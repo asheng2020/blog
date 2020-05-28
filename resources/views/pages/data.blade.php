@@ -37,8 +37,7 @@
             </span>
             <span class="ml20">
                 <i class="fa fa-comments fs-16"></i>
-                <a href="javascript:void(0)" class="num fc-grey">{{ $article->comment_count }} </a>
-                <a href="javascript:void(0)" class="num fc-grey">{{ $articles->count() }} </a>
+                <a href="{{ route('articles.show', $article->id) }}" class="num fc-grey">{{ $article->comment_count }} </a>
             </span>
         </div>
     </aside>

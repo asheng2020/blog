@@ -50,6 +50,8 @@ class ArticlesController extends Controller
 
     public function show(Article $article) {
 
+        $article->increment('read_count');
+
         $recommends = Article::query()  ->inRandomOrder()->take(3)->get();
 
         return view('pages.content', [
@@ -62,7 +64,6 @@ class ArticlesController extends Controller
         $builder = Article::query()->where('on_show', true);
         if ($search = $request->input('content', '')) {
             $like = '%'.$search.'%';
-            // 模糊搜索商品标题、商品详情、SKU 标题、SKU描述
             $builder->where(function ($query) use ($like) {
                 $query->where('title', 'like', $like);
             });

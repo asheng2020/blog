@@ -1,4 +1,4 @@
-﻿.header{margin:0 auto;width:100%;height:100%;background-color:#000;position:fixed!important;background-image:url(https://yssimage.oss-cn-hangzhou.aliyuncs.com/bg9.jpg);background-size:100% 100%}
+.header{margin:0 auto;width:100%;height:100%;background-color:#000;position:fixed!important;background-image:url(https://yssimage.oss-cn-hangzhou.aliyuncs.com/bg9.jpg);background-size:100% 100%}
 *{margin:0;padding:0}
 a,img{text-decoration:none;border:none}
 button,input,textarea{outline:0;border:none;font:14px/1.5 "Microsoft YaHei","微软雅黑","Helvetica Neue","Hiragino Sans GB",Helvetica,Tahoma,sans-serif;color:#515250}
@@ -15,8 +15,9 @@ body,html{background-color:rgba(255,255,255,.5);font:14px/1.5 "Helvetica neue",H
 .nav li a{display:block;line-height:32px;padding:4px 28px;color:#212220;font-weight:400;font-size:15px;text-shadow:0 1px 0 rgba(255,255,255,.2);-webkit-transition:all .2s;transition:all .2s}
 .nav .current:before{width:100%;left:0}
 .nav .current a{color:#6bc30d}
-.blog-user{position:absolute;line-height:60px;font-size:24px}
+.blog-user{position:absolute;line-height:60px;font-size:24px;margin-left: -20px}
 .blog-user>img{border-radius:50%;width:40px;height:40px}
+.blog-login-btn{float: right;margin-right: 10px;line-height:30px;height:30px;font-size:15px;margin-top:14px}
 .phone-menu{width:50px;height:50px;display:inline-block;position:absolute;cursor:pointer;right:0;top:5px}
 .phone-menu i{background:#787977;display:inline-block;width:22px;height:2px;position:absolute;left:14px}
 .phone-menu i:nth-of-type(1){top:18px}
@@ -65,5 +66,19 @@ body,html{background-color:rgba(255,255,255,.5);font:14px/1.5 "Helvetica neue",H
 .nav li:before{bottom:0;z-index:10}
 .nav li{float:none;border-bottom:1px solid #e8e9e7}
 .nav li:last-child{border:0}
+.blog-login-btn {
+    float: left;
+    line-height: 25px;
+    height: 25px;
+    font-size: 12px;
+    margin-top: 20px;
+    margin-right: 0px;
+    width: 60px;
+}
+
+.blog-login-editor {
+    display: none
+}
 }
 @font-face{font-family:BarbaraHand;src:url(../font/barbarahand-webfont.eot);src:url(../font/barbarahand-webfont.eot?#iefix) format('embedded-opentype'),url(../font/barbarahand-webfont.woff2) format('woff2'),url(../font/barbarahand-webfont.woff) format('woff'),url(../font/barbarahand-webfont.ttf) format('truetype'),url(../font/barbarahand-webfont.svg#BarbaraHand) format('svg');font-weight:400;font-style:normal}
+

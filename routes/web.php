@@ -28,3 +28,18 @@ Route::get('/about', 'AboutController@index')->name('about.index');
 
 Route::post('/search', 'ArticlesController@search');
 
+// 引导用户到新浪微博的登录授权页面
+Route::get('auth/weibo', 'AuthController@weibo');
+// 用户授权后新浪微博回调的页面
+Route::get('auth/callback', 'AuthController@callback');
+
+
+Auth::routes();
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.other')
 @section('title', '关于')
 
 @section('content')

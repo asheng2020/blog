@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.other')
 @section('title', '友链')
 
 @section('content')

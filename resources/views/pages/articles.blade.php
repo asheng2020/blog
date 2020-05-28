@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.other')
 @section('title', '文章列表')
 
 @section('content')
@@ -112,6 +112,7 @@
                     headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') },
                 }).done(function(data) {
                     if(data.html == "") {
+                        $(".search-result li").remove();
                         return;
                     }
 

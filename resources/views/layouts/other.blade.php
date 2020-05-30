@@ -47,7 +47,7 @@
                 </div>
                 @else
                 <a href="{{ route('logout') }}" class="blog-user" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                    <img src="https://thirdqq.qlogo.cn/g?b=oidb&amp;k=7plfrRUaoVfEC1VIQafMZw&amp;s=100&amp;t=1587038896" alt="阿生" title="阿生">
+                    <img src="https://thirdqq.qlogo.cn/g?b=oidb&amp;k=7plfrRUaoVfEC1VIQafMZw&amp;s=100&amp;t=1587038896" alt="{{ Auth::user()->name }}" title="{{ Auth::user()->name }}">
                 </a>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

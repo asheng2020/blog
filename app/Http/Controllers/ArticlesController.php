@@ -49,11 +49,19 @@ class ArticlesController extends Controller
         ]);
     }
 
-    public function show(Article $article) {
+    public function show(Article $article, Request $request) {
 
         $article->increment('read_count');
 
-        $messages = Comment::query()->where('article_id', $article->id)->where('comment_id', 0)->orderByDesc('created_at')->get();
+        $messages = Comment::query()->where('article_id', $article->id)->where('comment_id', 0)->orderByDesc('created_at')->paginate(10);
+
+        if ($request->ajax()) {
+            if ($messages->count() <= 0) {
+                return response()->json(['html'=> '']);
+            }
+            $view = view('messages.list', ['messages' => $messages])->render();
+            return response()->json(['html'=>$view]);
+        }
 
         $recommends = Article::query()  ->inRandomOrder()->take(3)->get();
 

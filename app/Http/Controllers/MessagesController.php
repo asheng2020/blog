@@ -11,8 +11,16 @@ use App\Models\Article;
 
 class MessagesController extends Controller
 {
-    public function index() {
-        $messages = Comment::query()->where('article_id', 0)->where('comment_id', 0)->orderByDesc('created_at')->get();
+    public function index(Request $request) {
+        $messages = Comment::query()->where('article_id', 0)->where('comment_id', 0)->orderByDesc('created_at')->paginate(10);
+
+        if ($request->ajax()) {
+            if ($messages->count() <= 0) {
+                return response()->json(['html'=> '']);
+            }
+            $view = view('messages.list', ['messages' => $messages])->render();
+            return response()->json(['html'=>$view]);
+        }
 
         return view('messages.index', [
             'message'   => new Comment(),

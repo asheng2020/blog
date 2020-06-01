@@ -91,3 +91,7 @@
     </div>
 </div>
 @endsection
+
+@section('scriptsAfterJs')
+<script src="/static/js/MessagesAjax.js"></script>
+@endsection

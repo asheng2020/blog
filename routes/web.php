@@ -36,10 +36,6 @@ Route::get('auth/callback', 'AuthController@callback');
 
 Auth::routes();
 
-Auth::routes();
+Route::get('/messages', 'MessagesController@index')->name('messages.index');
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/messages', 'MessagesController@store')->name('messages.store');

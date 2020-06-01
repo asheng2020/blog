@@ -162,6 +162,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         SocialiteProviders\Manager\ServiceProvider::class,
+        'Torann\GeoIP\GeoIPServiceProvider',
+        Jenssegers\Agent\AgentServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -228,6 +230,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'GeoIP' => 'Torann\GeoIP\GeoIPFacade',
+        'Agent' => Jenssegers\Agent\Facades\Agent::class,
 
     ],
 

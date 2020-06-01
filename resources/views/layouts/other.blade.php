@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/static/css/nprogress.css" />
     <link rel="stylesheet" href="/static/css/blog.css" />
     <link rel="stylesheet" href="/static/css/about.css" />
+    <link rel="stylesheet" href="/static/css/message.css" />
 
 </head>
 <body>
@@ -97,6 +98,7 @@
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script src="/static/js/plugins/blogbenoitboucart.min.js"></script>
     <script src="/static/js/pagediary.js"></script>
+    <script src="/static/js/pagemessage.js"></script>
     <script>
         window.onload = function () {
             NProgress.done();

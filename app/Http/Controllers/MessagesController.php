@@ -7,6 +7,7 @@ use App\Http\Requests\MessageRequest;
 use App\Models\Comment;
 use Torann\GeoIP\Facades\GeoIP;
 use Jenssegers\Agent\Agent;
+use App\Models\Article;
 
 class MessagesController extends Controller
 {
@@ -44,7 +45,7 @@ class MessagesController extends Controller
             Article::find($request->article_id)->increment('comment_count');
         }
 
-        return redirect(route('messages.index'));
+        return back();
 
     }
 }

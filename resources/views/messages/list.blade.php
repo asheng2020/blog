@@ -20,17 +20,15 @@
     @if($message->children($message->id)->count() > 0)
     <hr />
     @endif
-    @if(isset($abc))
-    <hr />
-    <hr />
-    <hr />
-    @endif
     @include('messages.child', ['children' => $message->children($message->id)])
     <div class="replycontainer layui-hide">
         <form class="layui-form" action="{{ route('messages.store') }}" method="POST">
             {{ csrf_field() }}
             <input type="hidden" name="remarkId" value="1">
             <input type="hidden" name="targetUserId" value="0">
+            @if(isset($article_id))
+            <input type="hidden" name="article_id" value="{{ $article_id }}">
+            @endif
             <div class="layui-form-item">
                 <textarea name="content" lay-verify="replyContent" placeholder="请输入回复内容" class="layui-textarea" style="min-height:80px;"></textarea>
             </div>

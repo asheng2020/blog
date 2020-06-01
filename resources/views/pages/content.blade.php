@@ -68,10 +68,11 @@
                             <legend>发表评论</legend>
                             <div class="layui-field-box">
                                 <div class="leavemessage" style="text-align:initial">
-                                    <form class="layui-form blog-editor" action="">
-                                        <input type="hidden" name="articleid" id="articleid" value="@Model.ID">
+                                    <form class="layui-form blog-editor" action="{{ route('messages.store') }}" method="POST">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="article_id"  value="{{ $article->id }}">
                                         <div class="layui-form-item">
-                                            <textarea name="editorContent" lay-verify="content" id="remarkEditor" placeholder="请输入内容" class="layui-textarea layui-hide"></textarea>
+                                            <textarea name="content" lay-verify="content" id="remarkEditor" placeholder="请输入内容" class="layui-textarea layui-hide"></textarea>
                                         </div>
                                         <div class="layui-form-item">
                                             <button class="layui-btn" lay-submit="formLeaveMessage" lay-filter="formLeaveMessage">提交留言</button>
@@ -80,7 +81,9 @@
                                 </div>
                             </div>
                         </fieldset>
-                        <ul class="blog-comment" id="blog-comment"></ul>
+                        <ul class="message-list" id="message-list">
+                            @include('messages.list', ['messages' => $messages, 'article_id' => $article->id])
+                        </ul>
                     </section>
                 </article>
             </div>

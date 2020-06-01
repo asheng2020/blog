@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Comment;
 
 class ArticlesController extends Controller
 {
@@ -52,11 +53,14 @@ class ArticlesController extends Controller
 
         $article->increment('read_count');
 
+        $messages = Comment::query()->where('article_id', $article->id)->where('comment_id', 0)->orderByDesc('created_at')->get();
+
         $recommends = Article::query()  ->inRandomOrder()->take(3)->get();
 
         return view('pages.content', [
-            'article'   => $article,
-            'recommends' => $recommends,
+            'article'       => $article,
+            'recommends'    => $recommends,
+            'messages'      => $messages,
         ]);
     }
 

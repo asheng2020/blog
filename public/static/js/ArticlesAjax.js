@@ -19,7 +19,7 @@ $(document).ready(function(){
             headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') },
         }).done(function(data) {
             if(data.html == "") {
-                $(".search-result li").remove();
+                $(".search-result").css('display', 'none');
                 return;
             }
 

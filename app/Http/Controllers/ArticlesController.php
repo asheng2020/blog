@@ -73,6 +73,9 @@ class ArticlesController extends Controller
     }
 
     public function search(Request $request) {
+        if (empty($request->content)) {
+            return response()->json(['html' => '']);
+        }
         $builder = Article::query()->where('on_show', true);
         if ($search = $request->input('content', '')) {
             $like = '%'.$search.'%';

@@ -1,7 +1,7 @@
 @foreach($children as $child)
 <div class="comment-child">
     <a name="reply-{{ $child->id }}"></a>
-    <img src="https://thirdqq.qlogo.cn/qqapp/101465933/7627F745B95BFAC18C6C481FE72B4EB1/100">
+    <img src="{{ asset($child->user->avatar) }}">
     <div class="info">
         <span class="username">{{ $child->user->name }}</span>
         <span style="padding-right:0;margin-left:-5px;">回复</span>

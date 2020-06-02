@@ -58,7 +58,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'avatar'    => ['image'],
+            'avatar'    => ['required','image'],
         ], $messages);
     }
 
@@ -74,18 +74,15 @@ class RegisterController extends Controller
             $result = $uploader->save($data['avatar'], 'avatars', 1);
             if ($result) {
                 $data['avatar'] = $result['path'];
-            } else {
-                var_dump(2);
-                // back()->withErrors(['avatar' => '请上传图片文件']);
             }
         }
-dd($data);
-        // return User::create([
-        //     'name'          => $data['name'],
-        //     'email'         => $data['email'],
-        //     'password'      => Hash::make($data['password']),
-        //     'logined_at'    => Carbon::now(),
-        //     'avatar'        => $data['avatar'],
-        // ]);
+
+        return User::create([
+            'name'          => $data['name'],
+            'email'         => $data['email'],
+            'password'      => Hash::make($data['password']),
+            'logined_at'    => Carbon::now(),
+            'avatar'        => $data['avatar'],
+        ]);
     }
 }

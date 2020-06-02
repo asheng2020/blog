@@ -38,4 +38,6 @@ Auth::routes();
 
 Route::get('/messages', 'MessagesController@index')->name('messages.index');
 
-Route::post('/messages', 'MessagesController@store')->name('messages.store');
+Route::group(['middleware' => ['auth', 'verified']], function() {
+    Route::post('/messages', 'MessagesController@store')->name('messages.store');
+});

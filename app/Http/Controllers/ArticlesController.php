@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Comment;
+use App\User;
 
 class ArticlesController extends Controller
 {
@@ -41,11 +42,14 @@ class ArticlesController extends Controller
 
         $categories = Category::get();
 
+        $visitors = User::query()->orderByDesc('logined_at')->take(12)->get();
+
         return view('pages.articles', [
             'articles'      => $articles,
             'top_articles'  => $top_articles,
             'hot_articles'  => $hot_articles,
             'categories'    => $categories,
+            'visitors'      => $visitors,
         ]);
     }
 

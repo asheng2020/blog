@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Carbon\Carbon;
 
 class CreateUsersTable extends Migration
 {
@@ -20,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('avatar')->nullable()->default('/default_avatar.jpg');
-            $table->timestamp('logined_at')->nullable();
+            $table->timestamp('logined_at')->default(Carbon::now());
             $table->rememberToken();
             $table->timestamps();
         });

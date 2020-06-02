@@ -13,8 +13,23 @@
                     <div class="card-header">{{ __('Register') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
-                            @csrf
+                        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+
+                            <div class="form-group row">
+                                <label for="name" class="col-md-4 col-form-label text-md-right">头像</label>
+
+                                <div class="col-md-6">
+                                    <input type="file" name="avatar" onchange="showPreview(this)"  class="@error('avatar') form-control is-invalid @enderror"/>
+                                    <img id="portrait" src="" style="display:none;width: 200px;height: 200px;" />
+
+                                    @error('avatar')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
 
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
@@ -80,4 +95,22 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scriptsAfterJs')
+<script type="text/javascript">
+    function showPreview(source) {
+      var file = source.files[0];
+      if(window.FileReader) {
+          var fr = new FileReader();
+          console.log(fr);
+          var portrait = document.getElementById('portrait');
+          fr.onloadend = function(e) {
+            portrait.src = e.target.result;
+          };
+          fr.readAsDataURL(file);
+          portrait.style.display = 'block';
+      }
+    }
+</script>
 @endsection

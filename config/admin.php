@@ -5,17 +5,17 @@ return [
     /*
      * 站点标题
      */
-    'name' => '个人博客',
+    'name' => '榊寒子',
 
     /*
      * 页面顶部 Logo
      */
-    'logo' => '<b>Blog</b>',
+    'logo' => '<b>Shen</b>',
 
     /*
      * 页面顶部小 Logo
      */
-    'logo-mini' => '<b>Blog</b>',
+    'logo-mini' => '<b>Shen</b>',
 
     /*
      * Laravel-Admin 启动文件路径
@@ -42,7 +42,7 @@ return [
     /*
      * Laravel-Admin 页面标题
      */
-    'title' => '个人博客管理后台',
+    'title' => '榊寒子管理后台',
 
     /*
      * 是否使用 https

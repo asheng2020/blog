@@ -79,7 +79,7 @@ pre{white-space:pre}
 .share ul li.f-sina{border-color:#ff7171}
 .share ul li.f-qzone{border-color:#fbb611}
 .share ul li.f-qq{border-color:#14afff}
-.share ul li a{position:absolute;background:url(../image/page/shareicon.png) no-repeat;background-size:32px 160px;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);margin:0}
+.share ul li a{position:absolute;background: url(../image/page/shareicon.png) no-repeat;background-size:32px 160px;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);margin:0}
 .share ul li .s-praise{background-position:0 -128px}
 .share ul li .s-weinxi{background-position:0 0}
 .share ul li .s-sina{background-position:0 -64px}
@@ -188,7 +188,7 @@ to{opacity:0}
 @media screen and (min-width:1025px){.category-toggle{display:none}
 .article-category,.blog-mask{display:none!important}
 }
-@media screen and (max-width:1024px){.f-qq,.f-qzone{display:none}
+@media screen and (max-width:1024px){.f-praise,.f-weinxi{display:none}
 #categoryandsearch{display:none}
 .col-content,.col-other{width:100%;float:none}
 #categoryandsearch.fixed{position:initial;animation:none;-webkit-animation:none;transform:none;-webkit-transform:none;width:100%;margin-top:20px}

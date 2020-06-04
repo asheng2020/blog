@@ -18,7 +18,7 @@
         <canvas class=" sketch" height="974" width="1920"></canvas></header>
         <div class="about-title">
             <h1>关于</h1>
-            <p>剑气纵横三万里,一剑光寒十九洲.</p>
+            <p>宝剑锋从磨砺出 梅花香自苦寒来</p>
         </div>
     </div>
     <div class="container-fixed">
@@ -27,15 +27,20 @@
                 <section>
                     <h1>关于我</h1>
                     <p>
-                        毕业后在古都西安某个工厂装盒子，很迷茫。2015年离开西安到成都转行做开发，然沉迷撸码，日渐消瘦。
+                        一个丧丧的男孩，不太懂为人处世的死肥宅。分享我日常的所见所闻，愿沙雕与你同在~
+                    </p>
+                    <p>
+                        由于是新手上路，所以有很多的坑没有填，希望大家能把自己碰见的问题或者有其他想法在留言板说出来，不断完善这个小破站。
                     </p>
                     <span>
                         可以通过以下方式联系到我：
                     </span>
                     <ul>
 
-                        <li>邮 箱 ：<a href="mailto:930054439@qq.com">930054439@qq.com</a></li>
-                        <li>码 云 ：<a href="https://gitee.com/yssgit/yan_shisan_blog_template" target="_blank">https://gitee.com/yssgit/events</a></li>
+                        <li>QQ：<a href="https://wpa.qq.com/msgrd?v=3&uin=1683972097&site=qq&menu=yes" class="qq" target="_blank" title="1683972097">1683972097</a></li>
+                        <li>邮箱：<a href="#">1683972097@qq.com</a></li>
+                        <li>微信号：<a href="#">qq2665540296</a></li>
+<!--                         <li>码 云 ：<a href="https://gitee.com/yssgit/yan_shisan_blog_template" target="_blank">https://gitee.com/yssgit/events</a></li> -->
 
                     </ul>
 
@@ -43,17 +48,17 @@
                 <section>
                     <h1>关于本站</h1>
                     <p>
-                        本站建于2018年4月，主要是个人爱好写着玩。
+                        本站建于2020年6月，某一天突然有个做博客的想法，于是就开始了。
                     </p>
                     <span>
                         本站结构：
                     </span>
                     <ul>
                         <li>前 端 ：<code>Layui</code></li>
-                        <li>后 端 ：<code>MVC5 + EF6 + MYSQL</code></li>
+                        <li>后 端 ：<code>PHP-laravel</code></li>
                     </ul>
                     <p>
-                        本站采用阿里云提供的服务器ESC和存储对象OSS。
+                        本站采用阿里云提供的服务器ESC。
                     </p>
                 </section>
                 <section>

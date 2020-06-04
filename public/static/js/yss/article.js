@@ -1,7 +1,7 @@
-﻿layui.use(['jquery'], function () {
+layui.use(['jquery'], function () {
     var $ = layui.jquery;
     article.Init($);//初始化共用js
-   
+
 });
 var article = {};
 article.Init = function ($) {
@@ -21,9 +21,11 @@ article.Init = function ($) {
     $('.blog-mask').click(function () {
         categoryOut();
     });
-    $('.f-qq').on('click', function () {
-        window.open('http://connect.qq.com/widget/shareqq/index.html?url=' + $(this).attr("href") + '&sharesource=qzone&title=' + $(this).attr("title") + '&pics=' + $(this).attr("cover") + '&summary=' + $(this).attr("desc") + '&desc=你的分享简述' + $(this).attr("desc"));
+
+    $(".f-qq").on("click", function() {
+        window.open("http://connect.qq.com/widget/shareqq/index.html?url=" + $(this).attr("href") + "&sharesource=qzone&title=" + $(this).attr("title") + "&pics=" + $(this).attr("cover") + "&summary=" + $(this).attr("desc") + "&desc=你的分享简述" + $(this).attr("desc"))
     });
+
     $("body").delegate(".fa-times", "click", function () {
         $(".search-result").hide().empty(); $("#searchtxt").val("");
         $(".search-icon i").removeClass("fa-times").addClass("fa-search");

@@ -1,6 +1,10 @@
 @extends('layouts.other')
 @section('title', '文章详情')
 
+@section('css')
+<link rel="stylesheet" href="/static/css/share.css" />
+@endsection
+
 @section('content')
 <style type="text/css">
     img {
@@ -18,7 +22,7 @@
                             <h4>{{ $article->title }}</h4>
                             <p class="fc-grey fs-14">
                                 <small>
-                                    作者：<a href="javascript:void(0)" target="_blank" class="fc-link">燕十三</a>
+                                    作者：<a href="{{ route('about.index') }}" target="_blank" class="fc-link">榊寒子</a>
                                 </small>
                                 <small class="ml10">围观群众：<i class="readcount">{{ $article->read_count }}</i></small>
                                 <small class="ml10">更新于 <label>{{ $article->updated_at }}</label> </small>
@@ -33,7 +37,7 @@
                             {!! $article->content !!}
                             <div class="copyright mt20">
                                 <p class="f-toe fc-black">
-                                    非特殊说明，本文版权归 燕十三 所有，转载请注明出处.
+                                    非特殊说明，本文版权归 榊寒子 所有，转载请注明出处.
                                 </p>
                                 <p class="f-toe">
                                     本文标题：
@@ -41,7 +45,7 @@
                                 </p>
                                 <p class="f-toe">
                                     本文网址：
-                                    <a href="{{ Request::url() }}">{{ Request::url() }}</a>
+                                    <a href="{{ route('articles.show', $article->id) }}">{{ Request::url() }}</a>
                                 </p>
                             </div>
                             <div id="aplayer" style="margin:5px 0"></div>
@@ -52,13 +56,13 @@
                                 @endforeach
                             </ol>
                         </div>
-                        <div class="bdsharebuttonbox share" data-tag="share_1">
-                            <ul>
-                                <li class="f-praise"><span><a class="s-praise"></a></span></li>
-                                <li class="f-weinxi"><a class="s-weinxi" data-cmd="weixin"></a></li>
-                                <li class="f-sina"><a class="s-sina" data-cmd="tsina"></a></li>
-                                <li class="f-qq" href="#"><i class="fa fa-qq"></i></li>
-                                <li class="f-qzone"><a class="s-qzone" data-cmd="qzone"></a></li>
+                        <div class="bdsharebuttonbox share bdshare-button-style0-32" data-tag="share_1" data-bd-bind="1591107087059">
+                            <ul class="shareListStyle">
+<!--                                 <li class="f-praise"><span><a class="s-praise"></a></span></li>
+                                <li class="f-weinxi"><a class="s-weinxi" data-cmd="weixin" target="_blank"></a></li> -->
+                                <li class="f-sina"><a href="http://service.weibo.com/share/share.php?url={{ route('articles.show', $article->id) }}&sharesource=weibo&title={{ $article->title }}&pic={{ $article->cover }}&appkey=3303384549" class="s-sina" data-cmd="tsina" target="_blank"></a></li>
+                                <li class="f-qq" href="{{ route('articles.show', $article->id) }}" title="{{ $article->title }}" desc="{{ $article->description }}" cover="{{ $article->cover }}"><i class="fa fa-qq"></i></li>
+                                <li class="f-qzone"><a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url={{ route('articles.show', $article->id) }}&sharesource=qzone&title={{ $article->title }}&pics={{ $article->cover }}&summary={{ $article->description }}" class="s-qzone" data-cmd="qzone" target="_blank"></a></li>
                             </ul>
                         </div>
                         <div class="f-cb"></div>

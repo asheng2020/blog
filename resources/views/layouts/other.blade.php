@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width" />
-    <meta name="author" content="www.yanshisan.cn" />
+    <meta name="author" content="" />
     <meta name="robots" content="all" />
     <meta name="_token" content="{{ csrf_token() }}"/>
     <title>@yield('title')</title>
@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="/static/css/blog.css" />
     <link rel="stylesheet" href="/static/css/about.css" />
     <link rel="stylesheet" href="/static/css/message.css" />
+    <link rel="ICON" href="/logo.png">
+    <link rel="SHORTCUT ICON" href="/logo.png">
 
 </head>
 <body>
@@ -26,7 +28,7 @@
     <header class="gird-header">
         <div class="header-fixed">
             <div class="header-inner">
-                <a href="javascript:void(0)" class="header-logo" id="logo">Mr.Yss</a>
+                <a href="javascript:void(0)" class="header-logo" id="logo">Mr.Shen</a>
                 <nav class="nav" id="nav">
                     <ul>
                         <li><a href="/index">首页</a></li>
@@ -79,12 +81,12 @@
                 <div class="info">
                     <div class="contact">
                         <a href="javascript:void(0)" class="github" target="_blank"><i class="fa fa-github"></i></a>
-                        <a href="https://wpa.qq.com/msgrd?v=3&uin=930054439&site=qq&menu=yes" class="qq" target="_blank" title="930054439"><i class="fa fa-qq"></i></a>
-                        <a href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=gbiysbG0tbWyuMHw8K-i7uw" class="email" target="_blank" title="930054439@qq.com"><i class="fa fa-envelope"></i></a>
-                        <a href="javascript:void(0)" class="weixin"><i class="fa fa-weixin"></i></a>
+                        <a href="https://wpa.qq.com/msgrd?v=3&uin=1683972097&site=qq&menu=yes" class="qq" target="_blank" title="1683972097"><i class="fa fa-qq"></i></a>
+                        <a href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=gbiysbG0tbWyuMHw8K-i7uw" class="email" target="_blank" title="1683972097@qq.com"><i class="fa fa-envelope"></i></a>
+                        <a href="{{ route('about.index') }}" class="weixin"><i class="fa fa-weixin"></i></a>
                     </div>
                     <p class="mt05">
-                        Copyright &copy; 2018-2018 燕十三 All Rights Reserved V.1.0.0 蜀ICP备18008600号
+                        Copyright &copy; 2020-未来 榊寒子 All Rights Reserved V.3.1.3
                     </p>
                 </div>
             </div>

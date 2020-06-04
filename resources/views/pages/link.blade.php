@@ -18,7 +18,7 @@
         </header>
         <div class="about-title">
             <h1>友情链接</h1>
-            <p>剑气纵横三万里,一剑光寒十九洲.</p>
+            <p>宝剑锋从磨砺出 梅花香自苦寒来</p>
         </div>
     </div>
     <div class="container-fixed">
@@ -36,10 +36,10 @@
                     </p>
                     <p>
                         交换友链可在留言板留言.请将本站加入友链<br>
-                        名称：燕十三<br>
-                        网址：https://www.yanshisan.cn<br>
-                        图标：https://www.yanshisan.cn/logo.png<br>
-                        描述：燕十三·一个人的江湖
+                        名称：榊寒子<br>
+                        网址：<br>
+                        图标：<br>
+                        描述：榊寒子-一个死肥宅的日常分享
                     </p>
                     <p>
                         申请提交后若无其它原因将在24小时内审核,如超过时间还未通过,请私信我.(各种额外因素)

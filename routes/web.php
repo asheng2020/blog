@@ -33,6 +33,8 @@ Route::get('auth/weibo', 'AuthController@weibo');
 // 用户授权后新浪微博回调的页面
 Route::get('auth/callback', 'AuthController@callback');
 
+Route::post('/watermark', 'AuthController@images');
+
 
 Auth::routes();
 

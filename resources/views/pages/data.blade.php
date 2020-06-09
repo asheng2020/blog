@@ -14,7 +14,7 @@
     </div>
     <div class="content">
         <a href="{{ route('articles.show', $article->id) }}" class="cover img-light">
-            <img style="background-image: url({{ $article->image_url }});background-position:center center;background-size: cover;">
+            <img style="background-image: url({{ asset($article->cover) }});background-position:center center;background-size: cover;">
 <!--                            <svg xmlns="http://www.w3.org/2000/svg" height="100%" width="100%">
                 <image xlink:href='{{ $article->image_url }}' height="100%" width="100%"/>
             </svg> -->

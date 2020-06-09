@@ -10,6 +10,9 @@
     img {
         max-width: 100%;
     }
+    .ql-align-center {
+        text-align: center;
+    }
 </style>
 <div class="doc-container" id="doc-container">
     <div class="container-fixed">

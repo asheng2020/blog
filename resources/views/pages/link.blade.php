@@ -37,8 +37,8 @@
                     <p>
                         交换友链可在留言板留言.请将本站加入友链<br>
                         名称：榊寒子<br>
-                        网址：<br>
-                        图标：<br>
+                        网址：{{ route('articles.home') }}<br>
+                        图标：{{ route('articles.home')."/logo.png" }}<br>
                         描述：榊寒子-一个死肥宅的日常分享
                     </p>
                     <p>

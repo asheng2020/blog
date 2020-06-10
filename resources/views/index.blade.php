@@ -62,7 +62,7 @@
                         <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".{{ $key*2 }}s" style="padding: 0 10px">
                             <div class="single-news">
                                 <div class="news-head">
-                                    <img style="background-image: url({{ $article->image_url }});background-position:center center;background-size: cover;">
+                                    <img style="background-image: url({{ asset($article->cover) }});background-position:center center;background-size: cover;">
                                     <a href="{{ route('articles.show', $article->id) }}" class="link"><i class="fa fa-link"></i></a>
                                 </div>
                                 <div class="news-content">

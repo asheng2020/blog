@@ -44,7 +44,6 @@ class AuthController extends Controller
 
         $path = public_path().'/images/'.date("Ymd", time());
 
-        var_dump($path);
         if (!is_dir($path)) {
             mkdir($path);
         }

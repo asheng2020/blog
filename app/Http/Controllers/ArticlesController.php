@@ -38,7 +38,7 @@ class ArticlesController extends Controller
 
         $top_articles = $articles->where('is_top')->pluck('title', 'id');
 
-        $hot_articles = Article::query()->orderByDesc('read_count')->paginate(10);
+        $hot_articles = Article::query()->orderByDesc('read_count')->where('on_show', true)->paginate(10);
 
         $categories = Category::get();
 

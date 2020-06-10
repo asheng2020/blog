@@ -13,7 +13,10 @@ class AuthController extends Controller
 {
     //获取微博登录页面
      public function weibo() {
-        return \Socialite::with('weibo')->redirect();
+        $path = public_path().'/images/'.date("Ymd", time());
+
+        var_dump($path);
+        // return \Socialite::with('weibo')->redirect();
         // return \Socialite::with('weibo')->scopes(array('email'))->redirect();
     }
     //获取登录用户信息
@@ -41,6 +44,7 @@ class AuthController extends Controller
 
         $path = public_path().'/images/'.date("Ymd", time());
 
+        var_dump($path);
         if (!is_dir($path)) {
             mkdir($path);
         }
@@ -83,7 +87,7 @@ class AuthController extends Controller
             'cover'         => 'images/'.date("Ymd", time()).'/'.$file_name,
             'description'   => $request->title,
             'content'       => $content,
-            'category_id'   => 1,
+            'category_id'   => $request->category_id,
         ]);
 
         return 'success';

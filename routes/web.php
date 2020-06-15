@@ -43,3 +43,6 @@ Route::get('/messages', 'MessagesController@index')->name('messages.index');
 Route::group(['middleware' => ['auth', 'verified']], function() {
     Route::post('/messages', 'MessagesController@store')->name('messages.store');
 });
+
+Route::get('test', 'AuthController@test');
+Route::post('files', 'AuthController@files');

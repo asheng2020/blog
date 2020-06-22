@@ -36,7 +36,8 @@ class AuthController extends Controller
     }
 
     public function images(Request $request) {
-        if (Article::query()->where('title', $request->title)->first()) {
+        $title = $request->title.'('.count($images).'P)';
+        if (Article::query()->where('title', $title)->first()) {
             return 'exist';
         }
 
@@ -82,7 +83,7 @@ class AuthController extends Controller
         $file_name = $arr[count($arr) - 1];
 
         Article::create([
-            'title'         => $request->title.'('.count($images).'P)',
+            'title'         => $title,
             'cover'         => '/images/'.date("Ymd", time()).'/'.$file_name,
             'description'   => $request->title,
             'content'       => $content,

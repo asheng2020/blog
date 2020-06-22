@@ -36,12 +36,13 @@ class AuthController extends Controller
     }
 
     public function images(Request $request) {
+        $images = json_decode($request->images, true);
         $title = $request->title.'('.count($images).'P)';
+
         if (Article::query()->where('title', $title)->first()) {
             return 'exist';
         }
 
-        $images = json_decode($request->images, true);
 
         $path = public_path().'/images/'.date("Ymd", time());
 

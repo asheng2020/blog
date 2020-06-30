@@ -107,7 +107,10 @@ class AuthController extends Controller
 
     // 接收本地上传的图片文件并处理
     public function files(Request $request) {
-        if (Article::query()->where('title', $request->title.'(20P)')->first()) {
+        $all = $request->all();
+        $img_count = count($all) - 3;
+
+        if (Article::query()->where('title', $request->title.'('.$img_count.'P)')->first()) {
             return 'exist';
         }
 
@@ -119,9 +122,8 @@ class AuthController extends Controller
             mkdir($folder_path);
         }
 
-        $all = $request->all();
         $content = '';
-        for($x = 1; $x < 21; $x++) {
+        for($x = 0; $x < $img_count; $x++) {
             $file = $all[(string)$x];
             $file_name = $file->getClientOriginalName();
 
@@ -141,10 +143,10 @@ class AuthController extends Controller
             $content .= '<p class="ql-align-center"><img src="'.url('/images/'.$time.'/'.$file_name).'"></p><br>';
         }
 
-        $cover_path = '/images/'.$time.'/'.$all["1"]->getClientOriginalName();
+        $cover_path = '/images/'.$time.'/'.$all["0"]->getClientOriginalName();
 
         Article::create([
-            'title'         => $request->title.'(20P)',
+            'title'         => $request->title.'('.$img_count.'P)',
             'cover'         => $cover_path,
             'description'   => $request->title,
             'content'       => $content,
